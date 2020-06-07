@@ -1,7 +1,8 @@
+// Importing modules
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ExerciseSchema = new Schema({
+const ExerciseSchema = new Schema ({
     type: String,
     name: String,
     distance: Number,
@@ -10,6 +11,6 @@ const ExerciseSchema = new Schema({
     reps: Number,
     duration: Number
 });
-
+// Export for use in index model
 const Exercise = mongoose.model('Exercise', ExerciseSchema);
 module.exports = Exercise
