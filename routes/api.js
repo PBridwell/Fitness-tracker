@@ -1,6 +1,6 @@
 // Bring in modules 
 const router = require("express").Router();
-const db = require("../models");
+const db = require("../models/Workout");
 
 // route to get last workout 
 router.get("/api/workouts", (req,res) => {
