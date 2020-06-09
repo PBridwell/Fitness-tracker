@@ -37,7 +37,7 @@ router.post("/api/workouts", (req, res) => {
   });
 
 // Get data for stats 
-app.get("/api/workouts/range", (req, res) => {
+router.get("/api/workouts/range", (req, res) => {
     db.find({})
     .limit(7)
     .then(dbWorkout => {
@@ -48,14 +48,5 @@ app.get("/api/workouts/range", (req, res) => {
     });
   });
 
-// route to create new exercise
-router.put("/api/workouts/:id", ({body}, res) => {
-    db.Exercise.create(body)
-    .then(dbWorkout => {
-        res.json(dbWorkout);
-    })
-    .catch(err => {
-        res.status(400).json(err);
-    });
-});
+
 module.exports = router;

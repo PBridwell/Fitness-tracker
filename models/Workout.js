@@ -9,10 +9,33 @@ const WorkoutSchema = new Schema ({
     },
     exercises: [
         {
-            type: Schema.Types.ObjectId,
-            ref: "Exercise"
+            type: {
+                type: String,
+                trim: true,
+                required: "Enter an exercise type"
+            },
+            name: {
+                type: String,
+                trim: true,
+                required: "Enter an exercise name"
+            },
+            distance: {
+                type: Number
+            },
+            weight: { 
+                type: Number
+            },
+            sets: {
+                type: Number
+            },
+            reps: {
+                type: Number
+            },
+            duration: {
+                type: Number
+            }
         }
-    ]  
+    ]
 });
 // Export for use in index model
 const Workout = mongoose.model('Workout', WorkoutSchema);
