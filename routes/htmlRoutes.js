@@ -7,6 +7,10 @@ router.get('/exercise', function(req, res) {
     res.sendFile(path.resolve('public/exercise.html'));
 });
 
+// Route to stats page 
+router.get("/stats", (req, res) => {
+    res.sendFile(path.resolve("public/stats.html"));
+  });
 
 
 

@@ -14,9 +14,42 @@ router.get("/api/workouts", (req,res) => {
     })
 })
 
+// get workout by id then push exercise 
+router.put("/api/workouts/:id", ({body, params}, res) => {
+    db.findByIdAndUpdate(params.id, {$push: {exercises: body}}, {new: true, runValidators: true})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+  });
+
+// Create new workout
+router.post("/api/workouts", (req, res) => {
+    db.create({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+  });
+
+// Get data for stats 
+app.get("/api/workouts/range", (req, res) => {
+    db.find({})
+    .limit(7)
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+  });
 
 // route to create new exercise
-router.post("/api/workouts", ({body}, res) => {
+router.put("/api/workouts/:id", ({body}, res) => {
     db.Exercise.create(body)
     .then(dbWorkout => {
         res.json(dbWorkout);
